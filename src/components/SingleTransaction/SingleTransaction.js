@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import formatDate from "../../helpers/formatDate";
 
 function SingleTransaction() {
   const { id } = useParams();
@@ -19,38 +20,31 @@ function SingleTransaction() {
       let { data } = await axios.get(
         `https://budgeting-app-back-end-1wo0.onrender.com/transactions/${id}`
       );
-
-      //   console.log(transactionData);
       setTransaction(data);
     } catch (e) {
       console.log(e);
     }
   }
 
-  function getDate() {
-    let newDate = new Date(transaction.date);
-
-    const options = { month: "long" };
-    let month = new Intl.DateTimeFormat("en-US", options).format(newDate);
-
-    let day = newDate.getUTCDate();
-
-    let year = newDate.getUTCFullYear();
-
-    newDate = `${month} ${day}, ${year}`;
-
-    return newDate;
-  }
-
   //   onClick functions
   function handleGoBack() {
     navigate("/transactions");
   }
+
   function handleEdit() {
     navigate(`/transactions/${id}/edit`);
   }
-  function handleDelete() {
-    navigate(`/transactions/${id}/delete`);
+
+  async function handleDelete() {
+    try {
+      axios.delete(
+        `https://budgeting-app-back-end-1wo0.onrender.com/transactions/${id}`
+      );
+
+      navigate("/transactions");
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (
@@ -59,7 +53,7 @@ function SingleTransaction() {
         <div>
           <p>Transaction ID: {transaction.id}</p>
           <p>Category: {transaction.category}</p>
-          <p>Date: {getDate()}</p>
+          <p>Date: {formatDate(transaction.date)}</p>
           <p>From: {transaction.from}</p>
           <p>Item Name: {transaction.itemName}</p>
           <p>Amount: ${transaction.amount}</p>

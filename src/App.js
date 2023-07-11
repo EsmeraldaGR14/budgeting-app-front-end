@@ -7,7 +7,6 @@ import NewTransaction from "./components/NewTransaction/NewTransaction";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import SingleTransaction from "./components/SingleTransaction/SingleTransaction";
 import EditTransaction from "./components/EditTransaction/EditTransaction";
-import DeleteTransaction from "./components/DeleteTransaction/DeleteTransaction";
 
 function App() {
   return (
@@ -24,10 +23,6 @@ function App() {
           <Route
             path="/transactions/:id/edit"
             element={<EditTransaction />}
-          ></Route>
-          <Route
-            path="/transactions/:id/delete"
-            element={<DeleteTransaction />}
           ></Route>
           <Route path="/transactions/new" element={<NewTransaction />}></Route>
           <Route path="*" element={<PageNotFound />}></Route>

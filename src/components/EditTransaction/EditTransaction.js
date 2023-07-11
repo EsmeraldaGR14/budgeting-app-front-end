@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import formatDate from "../../helpers/formatDate";
 import "./EditTransaction.css";
 
 function EditTransaction() {
@@ -16,8 +17,6 @@ function EditTransaction() {
     category: "",
   });
 
-  console.log(transactionData);
-
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -28,8 +27,8 @@ function EditTransaction() {
       let { data } = await axios.get(
         `https://budgeting-app-back-end-1wo0.onrender.com/transactions/${id}`
       );
-      console.log(data);
       setTransactionData(data);
+      console.log(data);
     } catch (e) {
       console.log(e);
     }
@@ -39,13 +38,24 @@ function EditTransaction() {
     e.preventDefault();
 
     const { itemName, amount, date, category, from } = transactionData;
+    console.log(transactionData);
+    // console.log(id);
     try {
       await axios.put(
         `https://budgeting-app-back-end-1wo0.onrender.com/transactions/${id}`,
-        { itemName, amount, date, category, from }
+        { id, itemName, amount, date, category, from }
       );
-      console.log(itemName);
+
+      setTransactionData({
+        itemName: "",
+        amount: 0,
+        date: "",
+        from: "",
+        category: "",
+      });
       console.log(transactionData);
+
+      navigate("/transactions");
     } catch (e) {
       console.log(e);
     }
@@ -60,9 +70,9 @@ function EditTransaction() {
           id="item-name"
           name="item-name"
           value={transactionData.itemName}
-          //   onChange={(e) =>
-          //     setTransactionData({ ...transactionData, itemName: e.target.value })
-          //   }
+          onChange={(e) =>
+            setTransactionData({ ...transactionData, itemName: e.target.value })
+          }
         ></input>
         <br />
         <label>Amount</label>
@@ -71,13 +81,24 @@ function EditTransaction() {
           id="amount"
           name="amount"
           value={transactionData.amount}
-          //   onChange={(e) =>
-          //     setTransactionData({ ...transactionData, amount: e.target.value })
-          //   }
+          onChange={(e) =>
+            setTransactionData({ ...transactionData, amount: e.target.value })
+          }
         ></input>
         <br />
         <label>Date</label>
-        <input type="date" id="date" name="date"></input>
+        <input
+          type="text"
+          id="date"
+          name="date"
+          value={formatDate(transactionData.date)}
+          onChange={(e) => {
+            setTransactionData({
+              ...transactionData,
+              date: formatDate(e.target.value),
+            });
+          }}
+        ></input>
         <br />
         <label>From</label>
         <input
@@ -85,9 +106,9 @@ function EditTransaction() {
           id="from"
           name="from"
           value={transactionData.from}
-          //   onChange={(e) =>
-          //     setTransactionData({ ...transactionData, from: e.target.value })
-          //   }
+          onChange={(e) =>
+            setTransactionData({ ...transactionData, from: e.target.value })
+          }
         ></input>
         <br />
         <label>Category</label>
