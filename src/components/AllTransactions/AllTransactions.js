@@ -58,12 +58,12 @@ function AllTransactions() {
   const bankTotal = getTransactionsBankTotal();
 
   function textColor() {
-    if (bankTotal === 0) {
-      return "balck";
+    if (bankTotal > 100) {
+      return "green";
     } else if (bankTotal < 0) {
       return "red";
     } else {
-      return "green";
+      return "yellow";
     }
   }
 
