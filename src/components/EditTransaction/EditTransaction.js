@@ -62,67 +62,107 @@ function EditTransaction() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>Item Name</label>
-        <input
-          type="text"
-          id="item-name"
-          name="item-name"
-          value={transactionData.itemName}
-          onChange={(e) =>
-            setTransactionData({ ...transactionData, itemName: e.target.value })
-          }
-        ></input>
-        <br />
-        <label>Amount</label>
-        <input
-          type="number"
-          id="amount"
-          name="amount"
-          value={transactionData.amount}
-          onChange={(e) =>
-            setTransactionData({ ...transactionData, amount: e.target.value })
-          }
-        ></input>
-        <br />
-        <label>Date</label>
-        <input
-          type="text"
-          id="date"
-          name="date"
-          value={formatDate(transactionData.date)}
-          onChange={(e) => {
-            setTransactionData({
-              ...transactionData,
-              date: formatDate(e.target.value),
-            });
-          }}
-        ></input>
-        <br />
-        <label>From</label>
-        <input
-          type="text"
-          id="from"
-          name="from"
-          value={transactionData.from}
-          onChange={(e) =>
-            setTransactionData({ ...transactionData, from: e.target.value })
-          }
-        ></input>
-        <br />
-        <label>Category</label>
-        <input
-          type="text"
-          id="category"
-          name="category"
-          value={transactionData.category}
-          onChange={(e) =>
-            setTransactionData({ ...transactionData, category: e.target.value })
-          }
-        ></input>
-        <button>Submit</button>
-      </form>
+    <div className="container">
+      <div className="card">
+        <div className="card-header">Transaction Form</div>
+        <div className="card-body">
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="item-name" className="form-label">
+                Item Name
+              </label>
+              <input
+                type="text"
+                id="item-name"
+                name="item-name"
+                value={transactionData.itemName}
+                onChange={(e) =>
+                  setTransactionData({
+                    ...transactionData,
+                    itemName: e.target.value,
+                  })
+                }
+                className="form-control"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="amount" className="form-label">
+                Amount
+              </label>
+              <input
+                type="number"
+                id="amount"
+                name="amount"
+                value={transactionData.amount}
+                onChange={(e) =>
+                  setTransactionData({
+                    ...transactionData,
+                    amount: e.target.value,
+                  })
+                }
+                className="form-control"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="date" className="form-label">
+                Date
+              </label>
+              <input
+                type="text"
+                id="date"
+                name="date"
+                value={formatDate(transactionData.date)}
+                onChange={(e) =>
+                  setTransactionData({
+                    ...transactionData,
+                    date: formatDate(e.target.value),
+                  })
+                }
+                className="form-control"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="from" className="form-label">
+                From
+              </label>
+              <input
+                type="text"
+                id="from"
+                name="from"
+                value={transactionData.from}
+                onChange={(e) =>
+                  setTransactionData({
+                    ...transactionData,
+                    from: e.target.value,
+                  })
+                }
+                className="form-control"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="category" className="form-label">
+                Category
+              </label>
+              <input
+                type="text"
+                id="category"
+                name="category"
+                value={transactionData.category}
+                onChange={(e) =>
+                  setTransactionData({
+                    ...transactionData,
+                    category: e.target.value,
+                  })
+                }
+                className="form-control"
+              />
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

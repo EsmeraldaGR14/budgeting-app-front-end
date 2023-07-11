@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import formatDate from "../../helpers/formatDate";
+import formatLongDate from "../../helpers/formatLongDate";
 
 function SingleTransaction() {
   const { id } = useParams();
@@ -48,18 +48,29 @@ function SingleTransaction() {
   }
 
   return (
-    <div>
+    <div className="container">
       {transaction.date && (
-        <div>
-          <p>Transaction ID: {transaction.id}</p>
-          <p>Category: {transaction.category}</p>
-          <p>Date: {formatDate(transaction.date)}</p>
-          <p>From: {transaction.from}</p>
-          <p>Item Name: {transaction.itemName}</p>
-          <p>Amount: ${transaction.amount}</p>
-          <button onClick={handleGoBack}>Back</button>
-          <button onClick={handleEdit}>Edit</button>
-          <button onClick={handleDelete}>Delete</button>
+        <div className="card">
+          <div className="card-body">
+            <h5 className="card-title">Transaction Details</h5>
+            <p className="card-text">Transaction ID: {transaction.id}</p>
+            <p className="card-text">Category: {transaction.category}</p>
+            <p className="card-text">
+              Date: {formatLongDate(transaction.date)}
+            </p>
+            <p className="card-text">From: {transaction.from}</p>
+            <p className="card-text">Item Name: {transaction.itemName}</p>
+            <p className="card-text">Amount: ${transaction.amount}</p>
+            <button className="btn btn-primary" onClick={handleGoBack}>
+              Back
+            </button>
+            <button className="btn btn-warning" onClick={handleEdit}>
+              Edit
+            </button>
+            <button className="btn btn-danger" onClick={handleDelete}>
+              Delete
+            </button>
+          </div>
         </div>
       )}
     </div>

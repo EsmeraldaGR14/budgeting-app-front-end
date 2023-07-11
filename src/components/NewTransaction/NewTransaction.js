@@ -47,76 +47,94 @@ function NewTransaction() {
   }
 
   return (
-    <div>
-      <form onSubmit={createNewTransation}>
-        <label>Item Name:</label>
-        <input
-          type="text"
-          id="item-name"
-          name="item-name"
-          value={newTransaction.itemName}
-          onChange={(e) => {
-            setNewTransaction({
-              ...newTransaction,
-              itemName: e.target.value,
-            });
-          }}
-        />
-        <label>Amount:</label>
-        <input
-          type="number"
-          id="amount"
-          name="amount"
-          value={newTransaction.amount}
-          onChange={(e) => {
-            setNewTransaction({
-              ...newTransaction,
-              amount: Number(e.target.value),
-            });
-          }}
-        />
-        <label>Date:</label>
-        <input
-          type="text"
-          id="date"
-          name="date"
-          value={newTransaction.date}
-          placeholder="YYYY-MM-DD"
-          onChange={(e) => {
-            setNewTransaction({
-              ...newTransaction,
-              date: e.target.value,
-            });
-          }}
-        />
-        <label>From:</label>
-        <input
-          type="text"
-          id="from"
-          name="from"
-          value={newTransaction.from}
-          onChange={(e) => {
-            setNewTransaction({
-              ...newTransaction,
-              from: e.target.value,
-            });
-          }}
-        />
-        <label>Category:</label>
-        <input
-          type="text"
-          id="category"
-          name="category"
-          value={newTransaction.category}
-          onChange={(e) => {
-            setNewTransaction({
-              ...newTransaction,
-              category: e.target.value,
-            });
-          }}
-        />
-        <button>Submit</button>
-      </form>
+    <div className="card my-4">
+      <div className="card-body">
+        <form onSubmit={createNewTransation}>
+          <div className="form-group">
+            <label htmlFor="item-name">Item Name:</label>
+            <input
+              type="text"
+              id="item-name"
+              name="item-name"
+              value={newTransaction.itemName}
+              required
+              onChange={(e) =>
+                setNewTransaction({
+                  ...newTransaction,
+                  itemName: e.target.value,
+                })
+              }
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="amount">Amount:</label>
+            <input
+              type="number"
+              id="amount"
+              name="amount"
+              value={newTransaction.amount}
+              required
+              onChange={(e) =>
+                setNewTransaction({
+                  ...newTransaction,
+                  amount: Number(e.target.value),
+                })
+              }
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="date">Date:</label>
+            <input
+              type="text"
+              id="date"
+              name="date"
+              value={newTransaction.date}
+              placeholder="YYYY-MM-DD"
+              required
+              onChange={(e) =>
+                setNewTransaction({ ...newTransaction, date: e.target.value })
+              }
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="from">From:</label>
+            <input
+              type="text"
+              id="from"
+              name="from"
+              value={newTransaction.from}
+              required
+              onChange={(e) =>
+                setNewTransaction({ ...newTransaction, from: e.target.value })
+              }
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="category">Category:</label>
+            <input
+              type="text"
+              id="category"
+              name="category"
+              value={newTransaction.category}
+              required
+              onChange={(e) =>
+                setNewTransaction({
+                  ...newTransaction,
+                  category: e.target.value,
+                })
+              }
+              className="form-control"
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

@@ -3,3 +3,24 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.container {
+  padding: 20px;
+}
+
+.card {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.card-header {
+  font-weight: bold;
+}
+
+.form-label {
+  margin-top: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}

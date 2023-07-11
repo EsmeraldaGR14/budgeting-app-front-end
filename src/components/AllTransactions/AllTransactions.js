@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import formatDate from "../../helpers/formatDate";
+// import formatDate from "../../helpers/formatDate";
+import formatLongDate from "../../helpers/formatLongDate";
+// import "./styles.css";
 
 function AllTransactions() {
   const [transactionsData, setTransactionsData] = useState([]);
@@ -68,25 +70,42 @@ function AllTransactions() {
   }
 
   return (
-    <div>
-      <h2>
-        Bank Total Account:{" "}
-        <span style={{ color: textColor() }}>{bankTotal}</span>
-      </h2>
-      {transactionsData.map(({ id, itemName, amount, date }) => (
-        <div key={id}>
-          <table>
-            <thead onClick={() => goToTransaction(id)}>
+    <div className="container d-flex flex-column align-items-center justify-content-center">
+      <div className="card">
+        <div className="card-body">
+          <table className="table table-hover table-bordered">
+            <thead className="thead-dark">
               <tr>
-                <td>{formatDate(date)}</td>
-                <td>{itemName}</td>
-                <td>{amount}</td>
+                <th>Date</th>
+                <th>Item Name</th>
+                <th>Amount</th>
+                <th></th>
               </tr>
             </thead>
+            <tbody>
+              {transactionsData.map(({ id, itemName, amount, date }) => (
+                <tr
+                  key={id}
+                  className="table-row"
+                  onClick={() => goToTransaction(id)}
+                >
+                  <td>{formatLongDate(date)}</td>
+                  <td>{itemName}</td>
+                  <td>{amount}</td>
+                  <td>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => handleDelete(id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
           </table>
-          <button onClick={() => handleDelete(id)}>Delete</button>
         </div>
-      ))}
+      </div>
     </div>
   );
 }

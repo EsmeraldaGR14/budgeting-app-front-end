@@ -1,0 +1,42 @@
+/* styles.css */
+
+/* Remove default link styles */
+.no-link-style {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Custom title styles */
+.title {
+  font-weight: bold;
+}
+
+/* Adjust padding for the navigation links container */
+.container {
+  padding: 20px;
+}
+
+/* Adjust margin between the navigation links */
+.container > * + * {
+  margin-left: 10px;
+}
+
+/* Custom title styles */
+.title {
+  font-weight: bold;
+}
+
+.bigger {
+  font-size: 24px;
+}
+
+/* styles.css */
+
+.btn-hover-white {
+  color: #ffffff;
+}
+
+.btn-hover-white:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
