@@ -43,20 +43,6 @@ function AllTransactions() {
     }
   }
 
-  function getTransactionsBankTotal() {
-    console.log(transactionsData);
-
-    let amountArr = [];
-    transactionsData.map(({ amount }) => amountArr.push(Number(amount)));
-    let sum = 0;
-
-    for (let i = 0; i < amountArr.length; i++) {
-      sum += amountArr[i];
-    }
-
-    return sum;
-  }
-
   return (
     <div className="container d-flex flex-column align-items-center justify-content-center">
       <div className="card">
