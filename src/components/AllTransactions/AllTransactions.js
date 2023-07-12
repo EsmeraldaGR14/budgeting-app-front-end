@@ -57,8 +57,6 @@ function AllTransactions() {
     return sum;
   }
 
-  const bankTotal = getTransactionsBankTotal();
-
   return (
     <div className="container d-flex flex-column align-items-center justify-content-center">
       <div className="card">
