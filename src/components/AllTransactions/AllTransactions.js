@@ -59,16 +59,6 @@ function AllTransactions() {
 
   const bankTotal = getTransactionsBankTotal();
 
-  function textColor() {
-    if (bankTotal > 100) {
-      return "green";
-    } else if (bankTotal < 0) {
-      return "red";
-    } else {
-      return "yellow";
-    }
-  }
-
   return (
     <div className="container d-flex flex-column align-items-center justify-content-center">
       <div className="card">
